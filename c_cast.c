@@ -1,3 +1,4 @@
+#include <windows.h>
 #include <stdio.h>
 #include <math.h>
 
@@ -62,7 +63,7 @@ void cast() {
 		}
 		double distance = sqrt(pow(p_x - r_x, 2) + pow(p_y - r_y, 2));
 
-		//push fisheye fix here
+		// distance = distance * cos(degree_to_R(r_angle - p_angle));
 
 		double wall_h = floor(sc_half_height / distance);
 		for(int j = (sc_half_height - wall_h); j < (sc_half_height + wall_h); j++){
@@ -94,6 +95,8 @@ int main(int argc, char** argv) {
 
 	while(1){
 		cast();
+		// Sleep(100);
+		// printf("\033[2J");
 		draw();
 		clear_sc();
 		p_angle += 0.05;
